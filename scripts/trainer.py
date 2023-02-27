@@ -1474,7 +1474,7 @@ def main():
                                             del encode
                                         else:
                                             encode = text_encoder(chunk.to(accelerator.device))[0]
-                                            z = torch.cat((z, encode.last_hidden_state), dim=-2)
+                                            z = torch.cat((z, encode), dim=-2)
                                             del encode
 
                                     clamp_chunk += 1
