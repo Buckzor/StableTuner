@@ -462,8 +462,7 @@ class AutoBucketing(Dataset):
             example["instance_prompt_ids"] = self.tokenizer(
                 image_train_tmp.caption,
                 padding="do_not_pad",
-                truncation=True,
-                max_length=self.tokenizer.model_max_length,
+                verbose=False
             ).input_ids
             image_train_item.self_destruct()
             return example
@@ -478,8 +477,7 @@ class AutoBucketing(Dataset):
             example["class_prompt_ids"] = self.tokenizer(
                 image_train_tmp.caption,
                 padding="do_not_pad",
-                truncation=True,
-                max_length=self.tokenizer.model_max_length,
+                verbose=False
             ).input_ids
             image_train_item.self_destruct()
             return example
@@ -1308,8 +1306,7 @@ class NormalDataset(Dataset):
         example["instance_prompt_ids"] = self.tokenizer(
             instance_prompt,
             padding="do_not_pad",
-            truncation=True,
-            max_length=self.tokenizer.model_max_length,
+            verbose=False
         ).input_ids
         if self.with_prior_preservation:
             class_path, class_prompt = self.class_images_path[index % self.num_class_images]
@@ -1343,8 +1340,7 @@ class NormalDataset(Dataset):
             example["class_prompt_ids"] = self.tokenizer(
                 class_prompt,
                 padding="do_not_pad",
-                truncation=True,
-                max_length=self.tokenizer.model_max_length,
+                verbose=False
             ).input_ids
 
         return example
